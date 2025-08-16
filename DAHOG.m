@@ -1,4 +1,4 @@
-function  [W,H] = DAHOG(X,XX,XXX,DH,DW,SH,SW,alpha,beta,lambda,k,m,n,maxiter)
+function  [W,H] = DAHOG(X,DH,DW,SH,SW,alpha,beta,lambda,k,maxiter)
 
 %%%%%%%%%%%%%%%%%%%%
 %% X: Data set in R_+^(m*n),  where m and n are the numbers of samples (words) and features (documents), respectively.
@@ -12,11 +12,14 @@ function  [W,H] = DAHOG(X,XX,XXX,DH,DW,SH,SW,alpha,beta,lambda,k,m,n,maxiter)
 %% n: The numbers of features (documents)
 %% maxiter: Maximum number of iterations
 
-
+XX = (X')*X;
+XXX = X * (X');
+[m,n] = size(X);
 
 %% Initialization
 W = rand(m,k);
 H = rand(k,n);
+
 iter=1;
 while iter<=maxiter
     %% Update the topic-document matrix H
