@@ -20,7 +20,7 @@
 
 
 %% Outputs
-%% V: Topic-Document Matrix.
+%% V: Topic-document matrix.
 %% U: Word-topic matrix. 
 clc
 clear
