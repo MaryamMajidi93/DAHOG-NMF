@@ -35,7 +35,9 @@ kmanifold = [5, 10, 15, 20]; %% This parameter needs to be tuned.
 k =[3:10, 15, 20, 25]; %% The number of topics.
 maxiter = 100;
 
-%% load data contaning fea and gnd
+
+%% Input data contains fea and gnd.
+
 X = NormalizeFea(fea,1); % fea is document-word matrix
 X = X';
 %% Please not that you should put the data samples in the columns of data and the final X will be word-document matrix
