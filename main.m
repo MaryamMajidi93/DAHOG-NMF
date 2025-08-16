@@ -44,4 +44,4 @@ X = X';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 [DH,SH] = makeLaplacian(X', kmanifold,alpha,lambda);
 [DW,SW] = makeLaplacian(X, kmanifold,alpha,lambda);
-[U,V] = OurDualAuto(X,DH,DW,SH,SW,alpha,alpha,lambda,k,maxiter);
+[U,V] = DAHOG(X,DH,DW,SH,SW,alpha,alpha,lambda,k,maxiter);
