@@ -13,7 +13,7 @@
 %% L: Laplacian matrix, L = D - S.
 %% alpha, beta, lambda: Regularization parameters.
 %% kmanifold: The k-neighborhood parameter used for constructing the first-order neighbor graph.
-%% k: The number of topics.
+%% NTopics: The number of topics.
 %% m: The numbers of samples (words)
 %% n: The numbers of features (documents)
 %% maxiter: Maximum number of iterations
@@ -32,7 +32,7 @@ addpath('./AdditionalFiles');
 alpha = [1e-08, 1e-06, 1e-04, 1e-02, 1, 1e02, 1e04, 1e06, 1e08, 1e10, 1e12] %% This parameter needs to be tuned.
 lambda = [1e-08, 1e-06, 1e-04, 1e-02, 1, 1e02, 1e04, 1e06, 1e08, 1e10, 1e12]; %% This parameter needs to be tuned.
 kmanifold = [5, 10, 15, 20]; %% This parameter needs to be tuned.
-NTopics =[3:10, 15, 20, 25]; %% The number of topics.
+NTopics =[3:10, 15, 20, 25]; 
 maxiter = 100;
 
 runNMI=zeros(50,1);
