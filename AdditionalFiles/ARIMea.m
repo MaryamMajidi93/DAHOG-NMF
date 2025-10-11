@@ -1,4 +1,6 @@
-function [ARI] = randindex(labels1, labels2)
+# Compute ARI measure
+
+function [ARI] = ARIMea(labels1, labels2)
 % The function calculates the Rand index (RI) and Adjusted Rand index (ARI)
 % between two label assignments: labels1 and labels2.
 
@@ -74,3 +76,4 @@ for i = 1:length(groups)
 end
 
 end
+
