@@ -1,6 +1,6 @@
-%% compute Nomalized mutual information
+%% compute Nomalized mutual information Measure
 
-function v = nmi(label, result)
+function v = NMIMea(label, result)
 
 % assert(length(label) == length(result));
 
@@ -44,6 +44,7 @@ MI = Hl + Hr - Hlr;
 v = sqrt((MI/Hl)*(MI/Hr));
 
 end
+
 
 
 
