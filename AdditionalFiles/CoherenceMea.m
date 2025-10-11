@@ -1,6 +1,6 @@
-%% compute coherence
+%% compute Coherence Measure
 
-function Coh = coherence_3(U,D,kk) % C is word-topic
+function Coh = CoherenceMea(U,D,kk) 
 SS = 0;
 for tp = 1:size(U, 2)
     [~,In]=sortrows(U,tp,"descend");
@@ -23,6 +23,7 @@ for tp = 1:size(U, 2)
 end
 Coh = SS/size(U,2) ;
 end
+
 
 
 
