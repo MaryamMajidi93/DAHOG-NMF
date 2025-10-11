@@ -35,12 +35,12 @@ kmanifold = [5, 10, 15, 20]; %% This parameter needs to be tuned.
 NTopics =[3:10, 15, 20, 25]; 
 maxiter = 100;
 
-runNMI=zeros(50,1);
-runACC=zeros(50,1);
-runCoh=zeros(50,1);
-runARI=zeros(50,1);
+runACC=zeros(50,1); %% Array to store Clustering Accuracy results from 50 Monte Carlo runs. 
+runNMI=zeros(50,1); %% Array to store NMI results from 50 Monte Carlo runs. 
+runCoh=zeros(50,1); %% Array to store Coherence results from 50 Monte Carlo runs. 
+runARI=zeros(50,1); %% Array to store ARI results from 50 Monte Carlo runs. 
 
-ACCmean  =  zeros(length(alpha),length(lambda),length(kmanifold));
+ACCmean  =  zeros(length(alpha),length(lambda),length(kmanifold)); 
 NMImean  =  zeros(length(alpha),length(lambda),length(kmanifold));
 Cohmean  =  zeros(length(alpha),length(lambda),length(kmanifold));
 ARImean  = zeros(length(alpha),length(lambda),length(kmanifold));
@@ -79,10 +79,10 @@ for NT=NTopics
                     [E,G] = DAHOG(X,DG,DW,SG,SW,alpha,alpha,lambda,NT,maxiter);
 
                     %% Clustering
-                    tempNMI=zeros(20,1);
-                    tempACC=zeros(20,1);
-                    tempCoh=zeros(20,1);
-                    tempARI=zeros(20,1);
+                    tempACC=zeros(20,1); %% Array to store Clustering Accuracy from 20 k-means repetitions.
+                    tempNMI=zeros(20,1); %% Array to store NMI from 20 k-means repetitions.
+                    tempCoh=zeros(20,1); %% Array to store Coherence from 20 k-means repetitions.
+                    tempARI=zeros(20,1); %% Array to store ARI from 20 k-means repetitions.
                     for j = 1:20
                         IDX = kmeans(G',length(unique(gnd2)));
                         tempNMI(j) = NMIMea(gnd2,IDX);
