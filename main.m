@@ -78,18 +78,17 @@ for NT=NTopics
                     [DE,SE] = makeLaplacian(X, kmanifold,alpha,lambda);
                     [E,G] = DAHOG(X,DG,DW,SG,SW,alpha,alpha,lambda,NT,maxiter);
 
-                    c =  length(unique(gnd2));
                     %% Clustering
                     tempNMI=zeros(20,1);
                     tempACC=zeros(20,1);
                     tempCoh=zeros(20,1);
                     tempARI=zeros(20,1);
                     for j = 1:20
-                        IDX = kmeans(G',c);
-                        tempNMI(j) = nmi(gnd2,IDX);
+                        IDX = kmeans(G',length(unique(gnd2)));
+                        tempNMI(j) = NMIMea(gnd2,IDX);
                         tempACC(j) = clusterAccMea(gnd2,IDX);
-                        tempCoh(j) = coherence(E,X,25);
-                        tempARI(j) = randindex(gnd2, IDX);
+                        tempCoh(j) = CoherenceMea(E,X,25);
+                        tempARI(j) = ARIMea(gnd2, IDX);
                     end
                     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     runACC(run) = mean(tempACC);
