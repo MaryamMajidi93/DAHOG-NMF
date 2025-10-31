@@ -1,11 +1,11 @@
-function  [W,H] = DAHOG(X,DH,DW,SH,SW,alpha,beta,lambda,k,maxiter)
+function  [E,G] = DAHOG(X,DG,DE,SG,SE,alpha,beta,lambda,k,maxiter)
 
 %%%%%%%%%%%%%%%%%%%%
 %% X: Data set in R_+^(m*n),  where m and n are the numbers of samples (words) and features (documents), respectively.
-%% SW: Similarity matrix in R_+^(m*m) associated with the data samples (words).
-%% DW: Degree matrix in R_+^(m*m) obtained from SW.
-%% SH: Similarity matrix in R_+^(n*n) associated with the data features (documents).
-%% DH: Degree matrix in R_+^(n*n) obtained from SH.
+%% SE: Similarity matrix in R_+^(m*m) associated with the data samples (words).
+%% DE: Degree matrix in R_+^(m*m) obtained from SE.
+%% SG: Similarity matrix in R_+^(n*n) associated with the data features (documents).
+%% DG: Degree matrix in R_+^(n*n) obtained from SG.
 %% alpha, beta, lambda: Regularization parameters.
 %% k: The number of topics.
 %% m: The numbers of samples (words)
@@ -17,28 +17,28 @@ XXX = X * (X');
 [m,n] = size(X);
 
 %% Initialization
-W = rand(m,k);
-H = rand(k,n);
+E = rand(m,k);
+G = rand(k,n);
 
 iter=1;
 while iter<=maxiter
-    %% Update the topic-document matrix H
-    XXH = H*XX;
-    WX = (W')*X;
-    numH = 3*WX + 2*H*(WX')*WX + alpha*H*SH + lambda*H;
-    denH = (W')*W*H + H + XXH + (XXH*(H')*H + H*(H')*XXH) + alpha*H*DH + lambda*H*(H')*H;
-    reH = numH./max(denH,1e-10);
-    reH = nthroot(reH,4);
-    H = H.*reH;
+    %% Update the topic-document matrix G
+    XXG = G*XX;
+    EX = (E')*X;
+    numG = 3*EX + 2*G*(EX')*EX + beta*G*SG + lambda*G;
+    denG = (E')*E*G + G + XXG + (XXG*(G')*G + G*(G')*XXG) + alpha*G*DG + lambda*G*(G')*G;
+    reG = numG./max(denG,1e-10);
+    reG = nthroot(reG,4);
+    G = G.*reG;
     
-    %% Update the word-topic matrix W
-    XH = X*(H');
-    XXW = XXX*W;
-    numW = 3*X*(H') + 2*XH*(XH')*W + beta*SW*W;
-    denW = W*H*(H') + XXW + W + (XXW*(W')*W + W*(W')*XXW) + beta*DW*W;
-    reW = numW./max(denW,1e-10);
-    reW = nthroot(reW,4);
-    W = W.*reW;
+    %% Update the word-topic matrix E
+    XG = X*(G');
+    XXE = XXX*E;
+    numE = 3*X*(G') + 2*XG*(XG')*E + alpha*SE*E;
+    denE = E*G*(G') + XXE + E + (XXE*(E')*E + E*(E')*XXE) + alpha*DE*E;
+    reE = numE./max(denE,1e-10);
+    reE = nthroot(reE,4);
+    E = E.*reE;
     %%
     iter = iter+1;
 end
