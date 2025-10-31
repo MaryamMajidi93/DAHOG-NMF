@@ -27,13 +27,14 @@ clear
 close all
 format shortG
 addpath('./AdditionalFiles');
+addpath('./Datasets');
 
 
 alpha = [1e-08, 1e-06, 1e-04, 1e-02, 1, 1e02, 1e04, 1e06, 1e08, 1e10, 1e12] %% This parameter needs to be tuned.
 lambda = [1e-08, 1e-06, 1e-04, 1e-02, 1, 1e02, 1e04, 1e06, 1e08, 1e10, 1e12]; %% This parameter needs to be tuned.
 kmanifold = [5, 10, 15, 20]; %% This parameter needs to be tuned.
 NTopics =[3:10, 15, 20, 25]; 
-maxiter = 100;
+maxiter = 200;
 
 runACC=zeros(50,1); %% Array to store Clustering Accuracy results from 50 Monte Carlo runs. 
 runNMI=zeros(50,1); %% Array to store NMI results from 50 Monte Carlo runs. 
