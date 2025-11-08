@@ -88,7 +88,7 @@ for NT=NTopics
                         IDX = kmeans(G',length(unique(gnd2)));
                         tempNMI(j) = NMIMea(gnd2,IDX);
                         tempACC(j) = clusterAccMea(gnd2,IDX);
-                        tempCoh(j) = CoherenceMea(E,X,25);
+                        tempCoh(j) = CoherenceMea(E,X);
                         tempARI(j) = ARIMea(gnd2, IDX);
                     end
                     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -106,4 +106,22 @@ for NT=NTopics
             end
         end
     end
+    
+    ACCfinalmean=max(ACCmean(:));
+    NMIfinalmean=max(NMImean(:));
+    Cohfinalmean=max(Cohmean(:));
+    ARIfinalmean=max(ARImean(:));
+
+    fprintf(1,'For #Tpoics = %d , The final results are: \n',NT)
+    disp('finalACC =')
+    disp(ACCfinalmean)
+    disp('finalNMI =')
+    disp(NMIfinalmean)
+    disp('finalCoh =')
+    disp(Cohfinalmean)
+    disp('finalARI =')
+    disp(ARIfinalmean)
+    disp('****************************************')
+
 end
+
