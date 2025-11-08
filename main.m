@@ -22,6 +22,11 @@
 %% Outputs
 %% G: Topic-document matrix.
 %% E: Word-topic matrix.
+%% ACCfinalmean: Final clustering accuracy reported for #topic = NT
+%% NMIfinalmean: Final Nomalized mutual information reported for #topic = NT
+%% Cohfinalmean: Final Coherence reported for #topic = NT
+%% ARIfinalmean: Final Adjusted Rand Index reported for #topic = NT
+
 clc
 clear
 close all
